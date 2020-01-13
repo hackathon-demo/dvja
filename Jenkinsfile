@@ -20,6 +20,7 @@ pipeline {
     }
     stage('Scan for vulnerabilities') {
       steps {
+        sh 'ls'
         sh 'cd var/lib/jenkins/workspace/dvja/target'
         sh 'java -jar dvja-*.war.jar && zap-cli quick-scan --self-contained --spider -r http://127.0.0.1 && zap-cli report -o zap-report.html -f html'
       }
