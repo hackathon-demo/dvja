@@ -20,7 +20,7 @@ pipeline {
     }
     stage('Scan for vulnerabilities') {
       steps {
-        sh 'java -jar ~/target/dvja-*.war.jar && zap-cli quick-scan --self-contained --spider -r http://127.0.0.1 && zap-cli report -o zap-report.html -f html'
+        sh 'java -jar dvja-*.war.jar -s http://ako20-appli-8lxm9c4oolv6-543855129.eu-west-1.elb.amazonaws.com/job/dvja/ && zap-cli quick-scan --self-contained --spider -r http://127.0.0.1 && zap-cli report -o zap-report.html -f html'
       }
     }
     stage('Publish to S3') {
